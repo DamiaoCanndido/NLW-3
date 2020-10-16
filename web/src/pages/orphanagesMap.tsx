@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiPlus, FiArrowRight } from 'react-icons/fi'; 
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
@@ -7,8 +7,16 @@ import mapMarker from '../images/map-marker.svg';
 
 import '../styles/pages/orphanages-map.css';
 import MapIcon from '../utils/mapIcon';
+import api from '../services/api';
 
 function OrphanagesMap() {
+
+    useEffect(() => {
+        api.get('orphanages').then(res => {
+            console.log(res)
+        })
+    }, []);
+
     return (
         <div id="page-map">
             <aside>
